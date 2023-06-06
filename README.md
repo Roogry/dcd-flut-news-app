@@ -1,6 +1,6 @@
-# dicoding_news_app
+# Dicoding Flutter News App
 
-A new Flutter application.
+This repository contains a Flutter mobile application developed for learning fundamental flutter development based on [Dicoding Class](https://www.dicoding.com/academies/195). The application focuses on creating native UI on both Android and iOS.
 
 ## Getting Started
 
