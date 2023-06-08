@@ -5,7 +5,7 @@ import 'package:dicoding_news_app/data/model/article.dart';
 
 class ApiService {
   static const String _baseUrl = 'https://newsapi.org/v2/';
-  static const String _apiKey = 'YOUR_API_KEY';
+  static const String _apiKey = 'e9cdfb5568fd4adeb3311c073cdd378f';
   static const String _category = 'business';
   static const String _country = 'id';
  

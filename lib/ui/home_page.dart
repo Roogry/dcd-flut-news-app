@@ -1,9 +1,12 @@
 import 'dart:io';
 
+import 'package:dicoding_news_app/data/service/api_service.dart';
+import 'package:dicoding_news_app/provider/news_provider.dart';
 import 'package:dicoding_news_app/widgets/platform_widget.dart';
 import 'package:dicoding_news_app/common/styles.dart';
 import 'package:dicoding_news_app/ui/article_list_page.dart';
 import 'package:dicoding_news_app/ui/setting_page.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +22,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _bottomNavIndex = 0;
 
-  List<BottomNavigationBarItem> _bottomNavBarItems = [
+  final List<BottomNavigationBarItem> _bottomNavBarItems = [
     BottomNavigationBarItem(
       icon: Icon(Platform.isIOS ? CupertinoIcons.news : Icons.public),
       label: "Headline",
@@ -31,8 +34,11 @@ class _HomePageState extends State<HomePage> {
   ];
 
   final List<Widget> _listWidget = [
-    ArticleListPage(),
-    SettingPage(),
+    Provider<NewsProvider>(
+      create: (_) => NewsProvider(apiService: ApiService()),
+      child: const ArticleListPage(),
+    ),
+    const SettingPage(),
   ];
 
   @override
