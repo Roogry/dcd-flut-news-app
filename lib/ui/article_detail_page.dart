@@ -19,15 +19,16 @@ class ArticleDetailPage extends StatelessWidget {
         child: Column(
           children: [
             Hero(
-                tag: article.urlToImage,
-                child: Image.network(article.urlToImage)),
+              tag: article.urlToImage!,
+              child: Image.network(article.urlToImage!),
+            ),
             Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    article.description,
+                    article.description ?? '',
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                   const Divider(color: Colors.grey),
@@ -47,7 +48,7 @@ class ArticleDetailPage extends StatelessWidget {
                   ),
                   const Divider(color: Colors.grey),
                   Text(
-                    article.content,
+                    article.content ?? '',
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                   const SizedBox(height: 10),
