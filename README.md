@@ -1,6 +1,6 @@
 # Dicoding Flutter News App
 
-This repository contains a Flutter mobile application developed for learning fundamental flutter development based on [Dicoding Class](https://www.dicoding.com/academies/195). The application focuses on creating native UI on both Android and iOS.
+This repository contains a Flutter mobile application developed for learning fundamental flutter development based on [Dicoding Class](https://www.dicoding.com/academies/195). The application focuses on creating native UI on both Android and iOS. Also get data using provider and http package from News API.
 
 ## Getting Started
 
