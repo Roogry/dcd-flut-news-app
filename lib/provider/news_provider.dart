@@ -1,5 +1,5 @@
 import 'package:dicoding_news_app/data/model/article.dart';
-import 'package:dicoding_news_app/data/service/api_service.dart';
+import 'package:dicoding_news_app/data/api/api_service.dart';
 import 'package:flutter/material.dart';
 
 enum ResultState { loading, noData, hasData, error }

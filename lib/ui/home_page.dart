@@ -1,7 +1,10 @@
 import 'dart:io';
 
-import 'package:dicoding_news_app/data/service/api_service.dart';
+import 'package:dicoding_news_app/data/api/api_service.dart';
 import 'package:dicoding_news_app/provider/news_provider.dart';
+import 'package:dicoding_news_app/provider/scheduling_provider.dart';
+import 'package:dicoding_news_app/ui/article_detail_page.dart';
+import 'package:dicoding_news_app/utils/notification_helper.dart';
 import 'package:dicoding_news_app/widgets/platform_widget.dart';
 import 'package:dicoding_news_app/common/styles.dart';
 import 'package:dicoding_news_app/ui/article_list_page.dart';
@@ -20,6 +23,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final NotificationHelper _notificationHelper = NotificationHelper();
   int _bottomNavIndex = 0;
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
@@ -38,8 +42,25 @@ class _HomePageState extends State<HomePage> {
       create: (_) => NewsProvider(apiService: ApiService()),
       child: const ArticleListPage(),
     ),
+    ChangeNotifierProvider<SchedulingProvider>(
+      create: (_) => SchedulingProvider(),
+      child: const SettingPage(),
+    ),
     const SettingPage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _notificationHelper
+        .configureSelectNotificationSubject(ArticleDetailPage.routeName);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
