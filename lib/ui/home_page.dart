@@ -4,6 +4,7 @@ import 'package:dicoding_news_app/data/api/api_service.dart';
 import 'package:dicoding_news_app/provider/news_provider.dart';
 import 'package:dicoding_news_app/provider/scheduling_provider.dart';
 import 'package:dicoding_news_app/ui/article_detail_page.dart';
+import 'package:dicoding_news_app/ui/bookmarks_page.dart';
 import 'package:dicoding_news_app/utils/notification_helper.dart';
 import 'package:dicoding_news_app/widgets/platform_widget.dart';
 import 'package:dicoding_news_app/common/styles.dart';
@@ -23,29 +24,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final NotificationHelper _notificationHelper = NotificationHelper();
   int _bottomNavIndex = 0;
+  static const String _headlineText = 'Headline';
+  final NotificationHelper _notificationHelper = NotificationHelper();
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
     BottomNavigationBarItem(
       icon: Icon(Platform.isIOS ? CupertinoIcons.news : Icons.public),
-      label: "Headline",
+      label: _headlineText,
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Platform.isIOS
+          ? CupertinoIcons.bookmark
+          : Icons.collections_bookmark),
+      label: BookmarksPage.bookmarksTitle,
     ),
     BottomNavigationBarItem(
       icon: Icon(Platform.isIOS ? CupertinoIcons.settings : Icons.settings),
-      label: "Setting",
+      label: SettingPage.settingsTitle,
     ),
   ];
 
   final List<Widget> _listWidget = [
-    Provider<NewsProvider>(
-      create: (_) => NewsProvider(apiService: ApiService()),
-      child: const ArticleListPage(),
-    ),
-    ChangeNotifierProvider<SchedulingProvider>(
-      create: (_) => SchedulingProvider(),
-      child: const SettingPage(),
-    ),
+    const ArticleListPage(),
+    const BookmarksPage(),
     const SettingPage(),
   ];
 

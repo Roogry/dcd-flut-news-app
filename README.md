@@ -2,6 +2,16 @@
 
 This repository contains a Flutter mobile application developed for learning fundamental flutter development based on [Dicoding Class](https://www.dicoding.com/academies/195). The application focuses on creating native UI on both Android and iOS. Also get data using provider and http package from News API.
 
+## Features
+- Bookmark with sqflite
+- Dark Theme with shared preferences
+- Get data from News API
+- Provider for state management
+- HTTP package for API request
+- Alarm Manager and Background Service 
+- Notification on Android
+- Native UI on both Android and iOS
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
