@@ -48,7 +48,11 @@ class SettingPage extends StatelessWidget {
               child: ListTile(
                 title: const Text('Dark Theme'),
                 trailing: Switch.adaptive(
-                    value: false, onChanged: (_) => customDialog(context)),
+                  value: provider.isDarkTheme,
+                  onChanged: (value) {
+                    provider.enableDarkTheme(value);
+                  },
+                ),
               ),
             ),
             Material(
@@ -57,12 +61,13 @@ class SettingPage extends StatelessWidget {
                 trailing: Consumer<SchedulingProvider>(
                   builder: (context, scheduled, _) {
                     return Switch.adaptive(
-                      value: scheduled.isScheduled,
+                      value: provider.isDailyNewsActive,
                       onChanged: (value) async {
                         if (Platform.isIOS) {
                           customDialog(context);
                         } else {
                           scheduled.scheduledNews(value);
+                          provider.enableDailyNews(value);
                         }
                       },
                     );
